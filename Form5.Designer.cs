@@ -29,23 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.BookTabBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.BibliotekaDataSet = new Kursovoi.BibliotekaDataSet();
             this.memberTabBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.orderTabBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.reportViewer3 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.BookTabTableAdapter = new Kursovoi.BibliotekaDataSetTableAdapters.BookTabTableAdapter();
             this.bookCategoryTabBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bookCategoryTabTableAdapter = new Kursovoi.BibliotekaDataSetTableAdapters.BookCategoryTabTableAdapter();
             this.tableAdapterManager = new Kursovoi.BibliotekaDataSetTableAdapters.TableAdapterManager();
             this.memberTabTableAdapter = new Kursovoi.BibliotekaDataSetTableAdapters.MemberTabTableAdapter();
             this.orderTabTableAdapter = new Kursovoi.BibliotekaDataSetTableAdapters.OrderTabTableAdapter();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.BookTabBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BibliotekaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memberTabBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderTabBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookCategoryTabBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // BookTabBindingSource
@@ -67,6 +71,42 @@
             // 
             this.orderTabBindingSource.DataMember = "OrderTab";
             this.orderTabBindingSource.DataSource = this.BibliotekaDataSet;
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.BookTabBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Kursovoi.Report1.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(1082, 756);
+            this.reportViewer1.TabIndex = 0;
+            // 
+            // reportViewer2
+            // 
+            this.reportViewer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource2.Name = "DataSet1";
+            reportDataSource2.Value = this.memberTabBindingSource;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer2.LocalReport.ReportEmbeddedResource = "Kursovoi.Report2.rdlc";
+            this.reportViewer2.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer2.Name = "reportViewer2";
+            this.reportViewer2.Size = new System.Drawing.Size(1082, 756);
+            this.reportViewer2.TabIndex = 1;
+            // 
+            // reportViewer3
+            // 
+            this.reportViewer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource3.Name = "DataSet1";
+            reportDataSource3.Value = this.orderTabBindingSource;
+            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportViewer3.LocalReport.ReportEmbeddedResource = "Kursovoi.Report3.rdlc";
+            this.reportViewer3.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer3.Name = "reportViewer3";
+            this.reportViewer3.Size = new System.Drawing.Size(1082, 756);
+            this.reportViewer3.TabIndex = 2;
             // 
             // BookTabTableAdapter
             // 
@@ -98,22 +138,14 @@
             // 
             this.orderTabTableAdapter.ClearBeforeFill = true;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::Kursovoi.Properties.Resources._2017_02_15;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1082, 756);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1082, 756);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.reportViewer3);
+            this.Controls.Add(this.reportViewer2);
+            this.Controls.Add(this.reportViewer1);
             this.Name = "Form5";
             this.Text = "Form5";
             this.Load += new System.EventHandler(this.Form5_Load);
@@ -122,12 +154,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.memberTabBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderTabBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookCategoryTabBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer3;
         private System.Windows.Forms.BindingSource BookTabBindingSource;
         private BibliotekaDataSet BibliotekaDataSet;
         private BibliotekaDataSetTableAdapters.BookTabTableAdapter BookTabTableAdapter;
@@ -138,6 +173,5 @@
         private System.Windows.Forms.BindingSource memberTabBindingSource;
         private BibliotekaDataSetTableAdapters.OrderTabTableAdapter orderTabTableAdapter;
         private System.Windows.Forms.BindingSource orderTabBindingSource;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

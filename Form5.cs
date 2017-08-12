@@ -33,10 +33,10 @@ namespace Kursovoi
             BibliotekaDataSet.OrderTab.ИмяColumn.Expression = "Parent(MemberTabOrderTab).MemberFirstName";
             BibliotekaDataSet.OrderTab.КнигаColumn.Expression = "Parent(BookTabOrderTab).BookName";
 
-   /*         switch (upDate.upd)
+            switch (upDate.upd)
             {
                 case 1:
-                   reportViewer1.LocalReport.ReportPath = "C:/Report1.rdlc";
+                    reportViewer1.LocalReport.ReportPath = "C:/Report1.rdlc";
                     this.reportViewer1.RefreshReport();
                     reportViewer1.Visible = true;
                     reportViewer2.Visible = false;
@@ -56,7 +56,7 @@ namespace Kursovoi
                     reportViewer2.Visible = false;
                     reportViewer3.Visible = true;
                     break;
-            } */
+            }
         }
     }
 }

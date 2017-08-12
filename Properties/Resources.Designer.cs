@@ -59,15 +59,5 @@ namespace Kursovoi.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _2017_02_15 {
-            get {
-                object obj = ResourceManager.GetObject("2017-02-15", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

@@ -7,9 +7,9 @@
 <DiagramLayout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ex:showrelationlabel="False" ViewPortX="0" ViewPortY="-47" xmlns:ex="urn:schemas-microsoft-com:xml-msdatasource-layout-extended" xmlns="urn:schemas-microsoft-com:xml-msdatasource-layout">
   <Shapes>
     <Shape ID="DesignTable:BookCategoryTab" ZOrder="9" X="462" Y="40" Height="115" Width="248" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="64" />
-    <Shape ID="DesignTable:BookTab" ZOrder="2" X="53" Y="38" Height="286" Width="243" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
+    <Shape ID="DesignTable:BookTab" ZOrder="1" X="53" Y="38" Height="248" Width="243" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
     <Shape ID="DesignTable:MemberTab" ZOrder="4" X="730" Y="254" Height="324" Width="215" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="216" />
-    <Shape ID="DesignTable:OrderTab" ZOrder="1" X="405" Y="206" Height="366" Width="199" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="258" />
+    <Shape ID="DesignTable:OrderTab" ZOrder="3" X="405" Y="206" Height="328" Width="224" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="258" />
     <Shape ID="DesignTable:OrderDays" ZOrder="6" X="72" Y="356" Height="172" Width="206" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
   </Shapes>
   <Connectors>
@@ -37,14 +37,14 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:MemberTabOrderTab" ZOrder="3" LineWidth="11">
+    <Connector ID="DesignRelation:MemberTabOrderTab" ZOrder="2" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>730</X>
           <Y>382</Y>
         </Point>
         <Point>
-          <X>604</X>
+          <X>629</X>
           <Y>382</Y>
         </Point>
       </RoutePoints>

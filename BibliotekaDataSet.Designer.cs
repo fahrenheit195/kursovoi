@@ -3986,33 +3986,23 @@ namespace Kursovoi.BibliotekaDataSetTableAdapters {
             this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("BookID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "BookID", global::System.Data.DataRowVersion.Original, false, null));
             this._commandCollection[2] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = @"SELECT        BookTab.BookID, BookTab.BookName, BookTab.BookCategoryID, BookTab.BookAuthor, BookTab.BookPublicationDate, BookTab.BookCost
-FROM            (BookTab INNER JOIN
-                         OrderTab ON BookTab.BookID = OrderTab.BookID)
-WHERE        (BookTab.BookAuthor LIKE ?) AND (OrderTab.BookIssue <> ?)";
+            this._commandCollection[2].CommandText = "SELECT BookID, BookName, BookCategoryID, BookAuthor, BookPublicationDate, BookCos" +
+                "t FROM BookTab WHERE (BookAuthor LIKE ?)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("BookAuthor", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "BookAuthor", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("BookIssue", global::System.Data.OleDb.OleDbType.Boolean, 2, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "BookIssue", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[3] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = @"SELECT        BookTab.BookID, BookTab.BookName, BookTab.BookCategoryID, BookTab.BookAuthor, BookTab.BookPublicationDate, BookTab.BookCost
-FROM            (BookTab INNER JOIN
-                         OrderTab ON BookTab.BookID = OrderTab.BookID)
-WHERE        (BookTab.BookName LIKE ?) OR
-                         (BookTab.BookAuthor LIKE ?) AND (OrderTab.BookIssue <> ?)";
+            this._commandCollection[3].CommandText = "SELECT BookID, BookName, BookCategoryID, BookAuthor, BookPublicationDate, BookCos" +
+                "t FROM BookTab WHERE (BookName LIKE ?) OR (BookAuthor LIKE ?)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("BookName", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "BookName", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[3].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("BookAuthor", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "BookAuthor", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("BookIssue", global::System.Data.OleDb.OleDbType.Boolean, 2, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "BookIssue", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[4] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = @"SELECT        BookTab.BookID, BookTab.BookName, BookTab.BookCategoryID, BookTab.BookAuthor, BookTab.BookPublicationDate, BookTab.BookCost
-FROM            (BookTab INNER JOIN
-                         OrderTab ON BookTab.BookID = OrderTab.BookID)
-WHERE        (BookTab.BookName LIKE ?) AND (OrderTab.BookIssue <> ?)";
+            this._commandCollection[4].CommandText = "SELECT BookID, BookName, BookCategoryID, BookAuthor, BookPublicationDate, BookCos" +
+                "t FROM BookTab WHERE (BookName LIKE ?)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("BookName", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "BookName", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("BookIssue", global::System.Data.OleDb.OleDbType.Boolean, 2, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "BookIssue", global::System.Data.DataRowVersion.Current, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4043,7 +4033,7 @@ WHERE        (BookTab.BookName LIKE ?) AND (OrderTab.BookIssue <> ?)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy_Auth(BibliotekaDataSet.BookTabDataTable dataTable, string BookAuthor, bool BookIssue) {
+        public virtual int FillBy_Auth(BibliotekaDataSet.BookTabDataTable dataTable, string BookAuthor) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((BookAuthor == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -4051,7 +4041,6 @@ WHERE        (BookTab.BookName LIKE ?) AND (OrderTab.BookIssue <> ?)";
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(BookAuthor));
             }
-            this.Adapter.SelectCommand.Parameters[1].Value = ((bool)(BookIssue));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -4063,7 +4052,7 @@ WHERE        (BookTab.BookName LIKE ?) AND (OrderTab.BookIssue <> ?)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy_both(BibliotekaDataSet.BookTabDataTable dataTable, string BookName, string BookAuthor, bool BookIssue) {
+        public virtual int FillBy_both(BibliotekaDataSet.BookTabDataTable dataTable, string BookName, string BookAuthor) {
             this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((BookName == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -4077,7 +4066,6 @@ WHERE        (BookTab.BookName LIKE ?) AND (OrderTab.BookIssue <> ?)";
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((string)(BookAuthor));
             }
-            this.Adapter.SelectCommand.Parameters[2].Value = ((bool)(BookIssue));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -4089,7 +4077,7 @@ WHERE        (BookTab.BookName LIKE ?) AND (OrderTab.BookIssue <> ?)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy_Nazv(BibliotekaDataSet.BookTabDataTable dataTable, string BookName, bool BookIssue) {
+        public virtual int FillBy_Nazv(BibliotekaDataSet.BookTabDataTable dataTable, string BookName) {
             this.Adapter.SelectCommand = this.CommandCollection[4];
             if ((BookName == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -4097,7 +4085,6 @@ WHERE        (BookTab.BookName LIKE ?) AND (OrderTab.BookIssue <> ?)";
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(BookName));
             }
-            this.Adapter.SelectCommand.Parameters[1].Value = ((bool)(BookIssue));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -5198,7 +5185,7 @@ WHERE        (BookTab.BookName LIKE ?) AND (OrderTab.BookIssue <> ?)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[4];
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[2];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        OrderID, MemberID, BookID, OrderStartDate, OrderFinishDate, OrderDa" +
@@ -5209,21 +5196,6 @@ WHERE        (BookTab.BookName LIKE ?) AND (OrderTab.BookIssue <> ?)";
             this._commandCollection[1].CommandText = "DELETE FROM OrderTab\r\nWHERE        (OrderID = ?)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("OrderID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "OrderID", global::System.Data.DataRowVersion.Original, false, null));
-            this._commandCollection[2] = new global::System.Data.OleDb.OleDbCommand();
-            this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT        OrderID, MemberID, BookID, OrderStartDate, OrderFinishDate, OrderDa" +
-                "ys, OrderCost, OrderTotal, BookIssue, BookLoss\r\nFROM            OrderTab\r\nWHERE " +
-                "       (BookID = ?)";
-            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("BookID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "BookID", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[3] = new global::System.Data.OleDb.OleDbCommand();
-            this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT        OrderID, MemberID, BookID, OrderStartDate, OrderFinishDate, OrderDa" +
-                "ys, OrderCost, OrderTotal, BookIssue, BookLoss\r\nFROM            OrderTab\r\nWHERE " +
-                "       (BookIssue = ?) AND (BookID = ?)";
-            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("BookIssue", global::System.Data.OleDb.OleDbType.Boolean, 2, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "BookIssue", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("BookID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "BookID", global::System.Data.DataRowVersion.Current, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5248,45 +5220,6 @@ WHERE        (BookTab.BookName LIKE ?) AND (OrderTab.BookIssue <> ?)";
             BibliotekaDataSet.OrderTabDataTable dataTable = new BibliotekaDataSet.OrderTabDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy(BibliotekaDataSet.OrderTabDataTable dataTable, global::System.Nullable<int> BookID) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
-            if ((BookID.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(BookID.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy_voz(BibliotekaDataSet.OrderTabDataTable dataTable, bool BookIssue, global::System.Nullable<int> BookID) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((bool)(BookIssue));
-            if ((BookID.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(BookID.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

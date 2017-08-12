@@ -24,7 +24,6 @@ namespace Kursovoi
             InitializeComponent();
             manager.BookTabTableAdapter = new BookTabTableAdapter();
             manager.MemberTabTableAdapter = new MemberTabTableAdapter();
-            manager.OrderTabTableAdapter = new OrderTabTableAdapter();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -34,7 +33,7 @@ namespace Kursovoi
             // TODO: This line of code loads data into the 'bibliotekaDataSet.BookCategoryTab' table. You can move, or remove it, as needed.
             this.bookCategoryTabTableAdapter.Fill(this.bibliotekaDataSet.BookCategoryTab);
             // TODO: This line of code loads data into the 'bibliotekaDataSet.OrderDays' table. You can move, or remove it, as needed.
-          //  this.orderDaysTableAdapter.Fill(this.bibliotekaDataSet.OrderDays);
+            this.orderDaysTableAdapter.Fill(this.bibliotekaDataSet.OrderDays);
             // TODO: This line of code loads data into the 'bibliotekaDataSet.OrderTab' table. You can move, or remove it, as needed.
             this.orderTabTableAdapter.Fill(this.bibliotekaDataSet.OrderTab);
             // TODO: This line of code loads data into the 'bibliotekaDataSet.MemberTab' table. You can move, or remove it, as needed.
@@ -55,7 +54,7 @@ namespace Kursovoi
         {
             this.bookTabTableAdapter.Fill(this.bibliotekaDataSet.BookTab);
             this.memberTabTableAdapter.Fill(this.bibliotekaDataSet.MemberTab);
-            this.orderTabTableAdapter.Fill(this.bibliotekaDataSet.OrderTab);
+            this.orderDaysTableAdapter.Fill(this.bibliotekaDataSet.OrderDays);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -154,17 +153,17 @@ namespace Kursovoi
             string auth = "%" + textBox2.Text + "%";
             if (checkBox1.Checked == true && checkBox2.Checked == true)
             {
-                manager.BookTabTableAdapter.FillBy_both(bibliotekaDataSet.BookTab, nazv, auth, checkBox5.Checked);
+                manager.BookTabTableAdapter.FillBy_both(bibliotekaDataSet.BookTab, nazv, auth);
             }
             else
             {
                 if (checkBox1.Checked == true)
                 {
-                    manager.BookTabTableAdapter.FillBy_Nazv(bibliotekaDataSet.BookTab, nazv, checkBox5.Checked);
+                    manager.BookTabTableAdapter.FillBy_Nazv(bibliotekaDataSet.BookTab, nazv);
                 }
                 else
                 {
-                    manager.BookTabTableAdapter.FillBy_Auth(bibliotekaDataSet.BookTab, auth, checkBox5.Checked);
+                    manager.BookTabTableAdapter.FillBy_Auth(bibliotekaDataSet.BookTab, auth);
                 }
             }
         }
@@ -203,34 +202,6 @@ namespace Kursovoi
         {
             upDate.upd = 3;
             f5.ShowDialog();
-        }
-  
-        private void look_order()
-        {
-            if (checkBox6.Checked==true) {
-                manager.OrderTabTableAdapter.FillBy_voz(bibliotekaDataSet.OrderTab, checkBox6.Checked, int.Parse(comboBox1.SelectedValue.ToString()));
-            }
-            else
-            {
-                manager.OrderTabTableAdapter.FillBy(bibliotekaDataSet.OrderTab, int.Parse(comboBox1.SelectedValue.ToString()));
-            }
-        }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                look_order();
-            }
-            catch
-            {
-                error();
-            }
-        }
-
-        private void button12_Click(object sender, EventArgs e)
-        {
-            reset();
         }
     }
 }

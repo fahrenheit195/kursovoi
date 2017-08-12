@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.button8 = new System.Windows.Forms.Button();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -69,10 +68,6 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.memberTabBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.button11 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.orderTabDataGridView = new System.Windows.Forms.DataGridView();
@@ -101,7 +96,8 @@
             this.tableAdapterManager = new Kursovoi.BibliotekaDataSetTableAdapters.TableAdapterManager();
             this.bookCategoryTabTableAdapter = new Kursovoi.BibliotekaDataSetTableAdapters.BookCategoryTabTableAdapter();
             this.orderTabTableAdapter = new Kursovoi.BibliotekaDataSetTableAdapters.OrderTabTableAdapter();
-            this.button12 = new System.Windows.Forms.Button();
+            this.orderDaysBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.orderDaysTableAdapter = new Kursovoi.BibliotekaDataSetTableAdapters.OrderDaysTableAdapter();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -115,6 +111,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.orderTabBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bookCategoryTabBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDaysBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -132,7 +129,6 @@
             // tabPage1
             // 
             this.tabPage1.AutoScroll = true;
-            this.tabPage1.Controls.Add(this.checkBox5);
             this.tabPage1.Controls.Add(this.button8);
             this.tabPage1.Controls.Add(this.checkBox2);
             this.tabPage1.Controls.Add(this.textBox2);
@@ -149,16 +145,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Книги";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(311, 32);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(116, 17);
-            this.checkBox5.TabIndex = 9;
-            this.checkBox5.Text = "Только в наличии";
-            this.checkBox5.UseVisualStyleBackColor = true;
             // 
             // button8
             // 
@@ -476,12 +462,6 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.AutoScroll = true;
-            this.tabPage3.Controls.Add(this.button12);
-            this.tabPage3.Controls.Add(this.label1);
-            this.tabPage3.Controls.Add(this.checkBox6);
-            this.tabPage3.Controls.Add(this.button11);
-            this.tabPage3.Controls.Add(this.comboBox1);
             this.tabPage3.Controls.Add(this.button5);
             this.tabPage3.Controls.Add(this.button6);
             this.tabPage3.Controls.Add(this.orderTabDataGridView);
@@ -491,47 +471,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Выдачи книг";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Книга";
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(223, 9);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(118, 17);
-            this.checkBox6.TabIndex = 7;
-            this.checkBox6.Text = "Только выданные";
-            this.checkBox6.UseVisualStyleBackColor = true;
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(347, 5);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(75, 23);
-            this.button11.TabIndex = 6;
-            this.button11.Text = "Поиск";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DataSource = this.bookTabBindingSource;
-            this.comboBox1.DisplayMember = "BookName";
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(51, 7);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(166, 21);
-            this.comboBox1.TabIndex = 5;
-            this.comboBox1.ValueMember = "BookID";
             // 
             // button5
             // 
@@ -675,21 +614,21 @@
             // книгиToolStripMenuItem
             // 
             this.книгиToolStripMenuItem.Name = "книгиToolStripMenuItem";
-            this.книгиToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.книгиToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.книгиToolStripMenuItem.Text = "Книги";
             this.книгиToolStripMenuItem.Click += new System.EventHandler(this.книгиToolStripMenuItem_Click);
             // 
             // читателиToolStripMenuItem
             // 
             this.читателиToolStripMenuItem.Name = "читателиToolStripMenuItem";
-            this.читателиToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.читателиToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.читателиToolStripMenuItem.Text = "Читатели";
             this.читателиToolStripMenuItem.Click += new System.EventHandler(this.читателиToolStripMenuItem_Click);
             // 
             // выданоToolStripMenuItem
             // 
             this.выданоToolStripMenuItem.Name = "выданоToolStripMenuItem";
-            this.выданоToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.выданоToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.выданоToolStripMenuItem.Text = "Выдано";
             this.выданоToolStripMenuItem.Click += new System.EventHandler(this.выданоToolStripMenuItem_Click);
             // 
@@ -745,15 +684,14 @@
             // 
             this.orderTabTableAdapter.ClearBeforeFill = true;
             // 
-            // button12
+            // orderDaysBindingSource
             // 
-            this.button12.Location = new System.Drawing.Point(428, 5);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(75, 23);
-            this.button12.TabIndex = 9;
-            this.button12.Text = "Сброс";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
+            this.orderDaysBindingSource.DataMember = "OrderDays";
+            this.orderDaysBindingSource.DataSource = this.bibliotekaDataSet;
+            // 
+            // orderDaysTableAdapter
+            // 
+            this.orderDaysTableAdapter.ClearBeforeFill = true;
             // 
             // Form1
             // 
@@ -777,12 +715,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.memberTabDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.memberTabBindingSource)).EndInit();
             this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderTabDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderTabBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bookCategoryTabBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDaysBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -812,6 +750,8 @@
         public BibliotekaDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         public BibliotekaDataSetTableAdapters.OrderTabTableAdapter orderTabTableAdapter;
         public System.Windows.Forms.BindingSource orderTabBindingSource;
+        public System.Windows.Forms.BindingSource orderDaysBindingSource;
+        public BibliotekaDataSetTableAdapters.OrderDaysTableAdapter orderDaysTableAdapter;
         public BibliotekaDataSetTableAdapters.BookCategoryTabTableAdapter bookCategoryTabTableAdapter;
         public System.Windows.Forms.BindingSource bookCategoryTabBindingSource;
         private System.Windows.Forms.Button button3;
@@ -847,11 +787,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn bookAuthorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn bookPublicationDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn bookCostDataGridViewTextBoxColumn;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Фамилия;
         private System.Windows.Forms.DataGridViewTextBoxColumn Имя;
@@ -862,7 +797,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.Button button12;
     }
 }
 

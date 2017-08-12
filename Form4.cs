@@ -49,7 +49,11 @@ namespace Kursovoi
 
             Double oC = price * 0.2;
 
-            Double oT = oC*oD.Days;
+            TimeSpan OD = oD;
+
+            Double dC = price * 0.5;
+
+            Double oT = (oC*oD.Days)+(dC*OD.Days);
 
             try
             {
@@ -69,6 +73,10 @@ namespace Kursovoi
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+   /*         var f1 = Application.OpenForms["Form1"] as Form1;
+            int bookId = int.Parse(comboBox1.SelectedValue.ToString());
+            manager.BookTabTableAdapter.BookIssue(bookId);
+            f1.bookTabTableAdapter.Fill(f1.bibliotekaDataSet.BookTab); */
             addOrder();
         }
     }
